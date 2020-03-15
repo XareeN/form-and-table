@@ -1,7 +1,7 @@
 form { 
   display: flex;
   flex-direction: column;
-  max-width: 25vw;
+  max-width: 25rem;
   margin: 0 auto;
 
   div {
@@ -12,6 +12,18 @@ form {
 
     &:last-of-type {
       margin-top: 1rem;
+    }
+
+    input {
+      padding: 0.2rem;
+    }
+    &.alert.alert-danger {
+      justify-content: right;
+
+      span {
+        color: red;
+        text-align: right;
+      }
     }
   }
   button {

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { People } from '../people';
+import { PeopleService } from '../people.service';
 
 @Component({
   selector: 'app-main-form',
@@ -8,19 +9,17 @@ import { People } from '../people';
 })
 export class MainFormComponent implements OnInit {
 
-  person: People[];
+  newPerson: People;
 
-  constructor() { }
+  constructor(private peopleService: PeopleService) { }
 
   ngOnInit(): void {
+    this.peopleService.currentMessage.subscribe(person => this.newPerson = person);
   }
 
-  submitData() {
-    console.log('data');
-  }
-
-  clearInputs() {
-    console.log('data cleared');
+  submitData(data) {
+    this.peopleService.changePerson(this.newPerson);
+    data.reset();
   }
 
 }

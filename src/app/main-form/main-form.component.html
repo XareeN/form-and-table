@@ -1,43 +1,159 @@
-<p>main-form works!</p>
-<form>
+<form #personForm="ngForm" (ngSubmit)="submitData(personForm)">
   <div>
     <label for="name">Imię </label>
     <input 
-      ngModel
+      [(ngModel)]="newPerson.name"
       name="name" 
       id="name" type="text"
-
+      #name="ngModel"
       required 
       maxlength="50" 
+      pattern="^([A-Z][a-z]*)$"
     >
   </div>
+  <div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger">
+    <span *ngIf="name.errors.required">
+      Imię jest wymagane.
+    </span>
+    <span *ngIf="name.errors.pattern">
+      Imię musi zaczynać się wielką literą.
+    </span>
+  </div>
+
   <div>
     <label for="surname">Nazwisko </label>
-    <input ngModel required maxlength="100" name="surname" id="surname" type="text">
-    
+    <input 
+      [(ngModel)]="newPerson.surname" 
+      name="surname" 
+      id="surname" 
+      #surname="ngModel"
+      required 
+      type="text"
+      maxlength="100" 
+      pattern="^([A-Z][a-z]*-[A-Z][a-z]*)|([A-Z][a-z]*)$"
+    >
   </div>
+  <div *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+    class="alert alert-danger">
+    <span *ngIf="surname.errors.required">
+      Nazwisko jest wymagane.
+    </span>
+    <span *ngIf="surname.errors.pattern">
+      Nazwisko musi zaczynać się wielką literą.
+    </span>
+  </div>
+
   <div>
     <label for="age">Wiek </label>
-    <input ngModel name="age" id="age" type="text">
+    <input 
+      [(ngModel)]="newPerson.age" 
+      name="age" 
+      id="age"
+      #age="ngModel"
+      type="text"
+      maxlength="3"
+      pattern="^[1-9][0-9]?$|^100$"
+    >
   </div>
+  <div *ngIf="age.invalid && (age.dirty || age.touched)"
+    class="alert alert-danger">
+    <span *ngIf="age.errors.required">
+      Wiek jest wymagany.
+    </span>
+    <span *ngIf="age.errors.pattern">
+      Wiek musi być liczbą z zakresu 1-100.
+    </span>
+  </div>
+
   <div>
     <label for="pesel">Pesel </label>
-    <input ngModel name="pesel" id="pesel" type="text">
+    <input 
+      [(ngModel)]="newPerson.pesel" 
+      name="pesel" 
+      id="pesel" 
+      #pesel="ngModel"
+      type="text"
+    >
   </div>
+
   <div>
     <label for="postalCode">Kod pocztowy </label>
-    <input ngModel name="postalCode" id="postalCode" type="text">
+    <input 
+      [(ngModel)]="newPerson.postalCode" 
+      name="postalCode" 
+      id="postalCode"
+      #postalCode="ngModel"
+      type="text"
+      maxlength="6"
+      pattern="^([0-9][0-9]-[0-9][0-9][0-9])$"
+    >
   </div>
+  <div *ngIf="postalCode.invalid && postalCode.touched"
+    class="alert alert-danger">
+    <span *ngIf="postalCode.errors.pattern">
+      Wymagany format, to xx-xxx.
+    </span>
+  </div>
+
   <div>
     <label for="city">Miasto </label>
-    <input ngModel required maxlength="50" name="city" id="city" type="text">
+    <input 
+      [(ngModel)]="newPerson.city" 
+      name="city" 
+      id="city" 
+      #city="ngModel"
+      required 
+      type="text"
+      maxlength="50" 
+      pattern="^([A-Z][a-z]*)$"
+    >
   </div>
+  <div *ngIf="city.invalid && (city.dirty || city.touched)"
+    class="alert alert-danger">
+    <span *ngIf="city.errors.required">
+      Miasto jest wymagane.
+    </span>
+    <span *ngIf="city.errors.pattern">
+      Wiek musi być liczbą z zakresu 1-100.
+    </span>
+  </div>
+
   <div>
     <label for="street">Ulica </label>
-    <input ngModel required maxlength="50" name="street" id="street" type="text">
+    <input 
+      [(ngModel)]="newPerson.street" 
+      name="street" 
+      id="street"
+      #street="ngModel"
+      required 
+      type="text"
+      maxlength="50" 
+      >
+      <!-- pattern="[A-Za-z0-9/.,\s]*" -->
   </div>
+  <div *ngIf="street.invalid && (street.dirty || street.touched)"
+    class="alert alert-danger">
+    <span *ngIf="street.errors.required">
+      Wiek jest wymagany.
+    </span>
+    <span *ngIf="street.errors.pattern">
+      Użyto niedozwolonego znaku.
+    </span>
+  </div>
+
   <div>
-    <button type="submit" (click)="submitData()" >Dodaj</button>
-    <button type="reset" (click)="clearInputs()">Wyczyść</button>
+    <!-- <button 
+      *ngIf="
+        !street.invalid"
+      type="submit">
+      Dodaj
+    </button> -->
+    <button type="submit">
+      Dodaj
+    </button>
+    <button type="reset" (click)="personForm.reset()">
+      Wyczyść
+    </button>
   </div>
 </form>
