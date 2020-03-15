@@ -1,0 +1,43 @@
+<p>main-form works!</p>
+<form>
+  <div>
+    <label for="name">Imię </label>
+    <input 
+      ngModel
+      name="name" 
+      id="name" type="text"
+
+      required 
+      maxlength="50" 
+    >
+  </div>
+  <div>
+    <label for="surname">Nazwisko </label>
+    <input ngModel required maxlength="100" name="surname" id="surname" type="text">
+    
+  </div>
+  <div>
+    <label for="age">Wiek </label>
+    <input ngModel name="age" id="age" type="text">
+  </div>
+  <div>
+    <label for="pesel">Pesel </label>
+    <input ngModel name="pesel" id="pesel" type="text">
+  </div>
+  <div>
+    <label for="postalCode">Kod pocztowy </label>
+    <input ngModel name="postalCode" id="postalCode" type="text">
+  </div>
+  <div>
+    <label for="city">Miasto </label>
+    <input ngModel required maxlength="50" name="city" id="city" type="text">
+  </div>
+  <div>
+    <label for="street">Ulica </label>
+    <input ngModel required maxlength="50" name="street" id="street" type="text">
+  </div>
+  <div>
+    <button type="submit" (click)="submitData()" >Dodaj</button>
+    <button type="reset" (click)="clearInputs()">Wyczyść</button>
+  </div>
+</form>

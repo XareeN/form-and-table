@@ -1,0 +1,29 @@
+<p>main-table works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Imię</th>
+      <th>Nazwisko</th>
+      <th>Wiek</th>
+      <th>PESEL</th>
+      <th>Kod pocztowy</th>
+      <th>Miasto</th>
+      <th>Ulica</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let ppl of people">
+      <td>{{ppl.name}}</td>
+      <td>{{ppl.surname}}</td>
+      <td>{{ppl.age}}</td>
+      <td>{{ppl.pesel}}</td>
+      <td>{{ppl.postalCode}}</td>
+      <td>{{ppl.city}}</td>
+      <td>{{ppl.street}}</td>
+      <td><button>Edytuj</button><button>Usuń</button></td>
+    </tr>
+
+  </tbody>
+</table>

@@ -1,0 +1,25 @@
+table{
+  margin: 0 auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+
+  th, td{
+    border: 1px solid #a9a9a9;
+    padding: 5px;
+  }
+
+  tr td:last-child {
+      padding: unset !important;
+      background-color: yellow;
+
+      button {
+        padding: 0.25rem 1rem;
+        background-color: yellow;
+        border: unset;
+
+        &:last-of-type {
+          border-left: 1px solid #a9a9a9;
+        }
+      }
+    }
+}
