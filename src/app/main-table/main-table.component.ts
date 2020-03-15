@@ -10,13 +10,12 @@ import { PeopleService } from '../people.service';
 export class MainTableComponent implements OnInit {
 
   people: People[];
-  person: People;
+  newPerson: People;
 
   constructor(private peopleService: PeopleService) { }
 
   ngOnInit(): void {
     this.getPeople();
-    this.updatePeople();
   }
 
   getPeople(): void {
@@ -24,14 +23,8 @@ export class MainTableComponent implements OnInit {
       .subscribe(ppl => this.people = ppl);
   }
 
-  updatePeople(): void {
-    this.peopleService.currentMessage
-      .subscribe((person) => {
-        this.person = person;
-        console.log(this.person);
-      });
-    this.people.push(this.person);
-    console.log(this.people);
+  receivePerson($event) {
+    this.people.push($event);
   }
 
 

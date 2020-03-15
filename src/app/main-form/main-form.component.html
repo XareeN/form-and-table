@@ -2,7 +2,7 @@
   <div>
     <label for="name">Imię </label>
     <input 
-      [(ngModel)]="newPerson.name"
+      ngModel
       name="name" 
       id="name" type="text"
       #name="ngModel"
@@ -23,8 +23,9 @@
 
   <div>
     <label for="surname">Nazwisko </label>
+    <!-- [(ngModel)]="newPerson.surname"  -->
     <input 
-      [(ngModel)]="newPerson.surname" 
+      ngModel
       name="surname" 
       id="surname" 
       #surname="ngModel"
@@ -46,8 +47,9 @@
 
   <div>
     <label for="age">Wiek </label>
+    <!-- [(ngModel)]="newPerson.age"  -->
     <input 
-      [(ngModel)]="newPerson.age" 
+      ngModel
       name="age" 
       id="age"
       #age="ngModel"
@@ -68,8 +70,9 @@
 
   <div>
     <label for="pesel">Pesel </label>
+    <!-- [(ngModel)]="newPerson.pesel"  -->
     <input 
-      [(ngModel)]="newPerson.pesel" 
+      ngModel
       name="pesel" 
       id="pesel" 
       #pesel="ngModel"
@@ -79,8 +82,9 @@
 
   <div>
     <label for="postalCode">Kod pocztowy </label>
+    <!-- [(ngModel)]="newPerson.postalCode"  -->
     <input 
-      [(ngModel)]="newPerson.postalCode" 
+      ngModel
       name="postalCode" 
       id="postalCode"
       #postalCode="ngModel"
@@ -98,8 +102,9 @@
 
   <div>
     <label for="city">Miasto </label>
+    <!-- [(ngModel)]="newPerson.city"  -->
     <input 
-      [(ngModel)]="newPerson.city" 
+      ngModel
       name="city" 
       id="city" 
       #city="ngModel"
@@ -121,8 +126,9 @@
 
   <div>
     <label for="street">Ulica </label>
+    <!-- [(ngModel)]="newPerson.street"  -->
     <input 
-      [(ngModel)]="newPerson.street" 
+      ngModel
       name="street" 
       id="street"
       #street="ngModel"

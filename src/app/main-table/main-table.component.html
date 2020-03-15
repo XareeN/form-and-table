@@ -1,3 +1,4 @@
+<app-main-form (emitPerson)="receivePerson($event)"></app-main-form>
 <table>
   <thead>
     <tr>
@@ -12,7 +13,6 @@
     </tr>
   </thead>
   <tbody>
-
     <tr *ngFor="let ppl of people">
       <td>{{ppl.name}}</td>
       <td>{{ppl.surname}}</td>
@@ -23,6 +23,5 @@
       <td>{{ppl.street}}</td>
       <td><button>Edytuj</button><button>Usuń</button></td>
     </tr>
-
   </tbody>
 </table>
