@@ -19,6 +19,8 @@ form {
     }
     &.alert.alert-danger {
       justify-content: right;
+      display: flex;
+      flex-direction: column;
 
       span {
         color: red;
@@ -30,6 +32,5 @@ form {
     padding: 0.25rem 1rem;
     background-color: yellow;
     border: 1px solid black;
-
   }
 }

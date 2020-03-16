@@ -23,7 +23,6 @@
 
   <div>
     <label for="surname">Nazwisko </label>
-    <!-- [(ngModel)]="newPerson.surname"  -->
     <input 
       ngModel
       name="surname" 
@@ -47,7 +46,6 @@
 
   <div>
     <label for="age">Wiek </label>
-    <!-- [(ngModel)]="newPerson.age"  -->
     <input 
       ngModel
       name="age" 
@@ -70,19 +68,29 @@
 
   <div>
     <label for="pesel">Pesel </label>
-    <!-- [(ngModel)]="newPerson.pesel"  -->
     <input 
       ngModel
       name="pesel" 
       id="pesel" 
       #pesel="ngModel"
       type="text"
+      maxlength="11"
+      minlength="11"
+      pattern="[0-9]*"
     >
+  </div>
+  <div *ngIf="pesel.invalid && pesel.touched"
+    class="alert alert-danger">
+    <span *ngIf="pesel.errors.pattern">
+      Pesel musi zawierać same cyfry.
+    </span>
+    <span *ngIf="pesel.errors.minlength">
+      Pesel musi mieć 11 cyfr.
+    </span>
   </div>
 
   <div>
     <label for="postalCode">Kod pocztowy </label>
-    <!-- [(ngModel)]="newPerson.postalCode"  -->
     <input 
       ngModel
       name="postalCode" 
@@ -102,7 +110,6 @@
 
   <div>
     <label for="city">Miasto </label>
-    <!-- [(ngModel)]="newPerson.city"  -->
     <input 
       ngModel
       name="city" 
@@ -120,13 +127,12 @@
       Miasto jest wymagane.
     </span>
     <span *ngIf="city.errors.pattern">
-      Wiek musi być liczbą z zakresu 1-100.
+      Miasto musi zaczynać się wielką literą.
     </span>
   </div>
 
   <div>
     <label for="street">Ulica </label>
-    <!-- [(ngModel)]="newPerson.street"  -->
     <input 
       ngModel
       name="street" 
@@ -135,29 +141,32 @@
       required 
       type="text"
       maxlength="50" 
+      pattern="^([A-zĘęÓóĄąŚśŁłŻżŹźĆćŃń]+\s*){1,}\d*[A-z]*[/]*\d*[A-Za-z0-9]+M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$"
       >
-      <!-- pattern="[A-Za-z0-9/.,\s]*" -->
   </div>
   <div *ngIf="street.invalid && (street.dirty || street.touched)"
     class="alert alert-danger">
     <span *ngIf="street.errors.required">
-      Wiek jest wymagany.
+      Ulica jest wymagana.
     </span>
     <span *ngIf="street.errors.pattern">
-      Użyto niedozwolonego znaku.
+      Zły format danych.
     </span>
   </div>
 
   <div>
-    <!-- <button 
-      *ngIf="
-        !street.invalid"
+    <button 
+      [disabled]="
+        name.invalid ||
+        surname.invalid ||
+        city.invalid ||
+        street.invalid"
       type="submit">
       Dodaj
-    </button> -->
-    <button type="submit">
-      Dodaj
     </button>
+    <!-- <button type="submit">
+      Dodaj
+    </button> -->
     <button type="reset" (click)="personForm.reset()">
       Wyczyść
     </button>
